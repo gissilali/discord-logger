@@ -2,8 +2,8 @@
 
 namespace Gissilali\DiscordLogger;
 
-use Illuminate\Support\ServiceProvider;
 use Gissilali\DiscordLogger\Commands\DiscordLoggerCommand;
+use Illuminate\Support\ServiceProvider;
 
 class DiscordLoggerServiceProvider extends ServiceProvider
 {
@@ -38,7 +38,7 @@ class DiscordLoggerServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/discord-logger.php', 'discord-logger');
         $this->app->bind('discord-logger', function () {
             return new DiscordLogger();
-          });
+        });
     }
 
     public static function migrationFileExists(string $migrationFileName): bool

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Gissilali\DiscordLogger\Tests;
 
 class ExampleTest extends TestCase
 {

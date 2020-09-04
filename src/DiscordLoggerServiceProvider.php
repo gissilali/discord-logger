@@ -13,24 +13,7 @@ class DiscordLoggerServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/discord-logger.php' => config_path('discord-logger.php'),
             ], 'config');
-
-            $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/discord-logger'),
-            ], 'views');
-
-            $migrationFileName = 'create_discord_logger_table.php';
-            if (! $this->migrationFileExists($migrationFileName)) {
-                $this->publishes([
-                    __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
-                ], 'migrations');
-            }
-
-            $this->commands([
-                DiscordLoggerCommand::class,
-            ]);
         }
-
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'discord-logger');
     }
 
     public function register()

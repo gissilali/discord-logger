@@ -2,14 +2,12 @@
 
 namespace Gissilali\DiscordLogger;
 
-use Gissilali\DiscordLogger\Commands\DiscordLoggerCommand;
 use Illuminate\Support\ServiceProvider;
 
 class DiscordLoggerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        
     }
 
     public function register()

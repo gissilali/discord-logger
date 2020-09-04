@@ -100,8 +100,9 @@ class DiscordLogger extends Facade
         $response = Http::post(config('discord-logger.webhook_url'), [
             'username' => 'Discord Logger',
             'content' => $this->message,
-            'avatar_url' => 'https://appslab.co.ke/img/icons/apple-touch-icon-57x57.png'
+            'avatar_url' => 'https://appslab.co.ke/img/icons/apple-touch-icon-57x57.png',
         ]);
+
         return true;
     }
 }

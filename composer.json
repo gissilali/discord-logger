@@ -2,8 +2,8 @@
     "name": "gissilali/discordlogger",
     "description": "package to send logs to discord",
     "keywords": [
-        "",
-        "discord-logger"
+        "gissilali",
+        "discordlogger"
     ],
     "homepage": "https://github.com//discord-logger",
     "license": "MIT",

@@ -13,9 +13,6 @@ class DiscordLoggerHandler extends AbstractProcessingHandler
         $level = strtolower(Logger::getLevelName($record['level']));
 
         DiscordLogger::log($record['message'], $level)
-            ->setEvent('log-event')
-            ->setChannel('log-channel')
-            ->setInterests(['log-interest'])
             ->send();
     }
 }

@@ -44,48 +44,9 @@ class DiscordLogger extends Facade
         return $this;
     }
 
-    /**
-     * Sets the Pusher channel.
-     *
-     * @param  string $channel
-     * @return self
-     */
-    public function setChannel(string $channel): self
-    {
-        $this->channel = $channel;
-
-        return $this;
-    }
-
-    /**
-     * Sets the event name.
-     *
-     * @param  string $event
-     * @return self
-     */
-    public function setEvent(string $event): self
-    {
-        $this->event = $event;
-
-        return $this;
-    }
-
-    /**
-     * Set the interests for Push notifications.
-     *
-     * @param  array $interests
-     * @return self
-     */
-    public function setInterests(array $interests): self
-    {
-        $this->interests = $interests;
-
-        return $this;
-    }
-
     public static function log(string $message, string $level): self
     {
-        return app('pusher-logger')
+        return app('discord-logger')
             ->setMessage($message)
             ->setLevel($level);
     }
@@ -97,12 +58,13 @@ class DiscordLogger extends Facade
      */
     public function send(): bool
     {
-        $response = Http::post(config('discord-logger.webhook_url'), [
-            'username' => 'Discord Logger',
+        $config = config('logging.channels.discord');
+        $response = Http::post($config['url'], [
+            'username' => $config['username'],
             'content' => $this->message,
-            'avatar_url' => 'https://appslab.co.ke/img/icons/apple-touch-icon-57x57.png',
+            'avatar_url' => $config['avatar_url'],
         ]);
-
+        
         return true;
     }
 }

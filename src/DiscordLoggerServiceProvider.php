@@ -9,11 +9,7 @@ class DiscordLoggerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../config/discord-logger.php' => config_path('discord-logger.php'),
-            ], 'config');
-        }
+        
     }
 
     public function register()

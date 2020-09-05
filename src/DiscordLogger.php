@@ -2,7 +2,6 @@
 
 namespace Gissilali\DiscordLogger;
 
-use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Http;
 
 class DiscordLogger

@@ -16,7 +16,7 @@ class DiscordLoggerServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/discord-logger.php', 'discord-logger');
         $this->app->bind('discord-logger', function () {
-            return new DiscordLogger();
+            return new \Gissilali\DiscordLogger\DiscordLogger();
         });
     }
 

@@ -5,7 +5,7 @@ namespace Gissilali\DiscordLogger;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Http;
 
-class DiscordLogger extends Facade
+class DiscordLogger
 {
     protected string $message;
     protected string $level;
@@ -51,20 +51,22 @@ class DiscordLogger extends Facade
             ->setLevel($level);
     }
 
-    /**
-     * Dispatch a log message.
-     *
-     * @return bool
-     */
-    public function send(): bool
+    
+    public function send()
     {
-        $config = config('logging.channels.discord');
+        $config = [
+            'driver' => 'custom',
+            'url' => 'https://discordapp.com/api/webhooks/751493554198544395/JAxbpzBwTa3oTJ4rmJS1xVMwDHa5hdeq3QYVfQosFCwPkVTJBeXDARCWXi_FBUdZ3lIl',
+            'username' => 'Laravel Log',
+            'avatar_url' => ':boom:',
+            'level' => 'critical',
+        ];
         $response = Http::post($config['url'], [
             'username' => $config['username'],
             'content' => $this->message,
             'avatar_url' => $config['avatar_url'],
         ]);
         
-        return true;
+        return $response->status();
     }
 }
